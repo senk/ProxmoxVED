@@ -24,7 +24,8 @@ $STD apt-get install -y \
 msg_ok "Installed Dependencies"
 
 PG_VERSION="16" PG_MODULES="pgvector" setup_postgresql
-PG_DB_NAME="bookorbit" PG_DB_USER="bookorbit" PG_DB_EXTENSIONS="uuid-ossp,pg_trgm,vector" setup_postgresql_db
+PG_DB_NAME="bookorbit" PG_DB_USER="bookorbit" PG_DB_EXTENSIONS="pg_trgm,vector" setup_postgresql_db
+$STD sudo -u postgres psql -d bookorbit -c 'CREATE EXTENSION IF NOT EXISTS "uuid-ossp";'
 
 NODE_VERSION="24" NODE_MODULE="pnpm" setup_nodejs
 
